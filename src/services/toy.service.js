@@ -1,12 +1,7 @@
 
-import { storageService } from './async-storage.service.js'
-import { utilService } from './util.service.js'
+import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'toyDB'
-let toys
-const labels = ["On wheels", "Box game", "Art", "Baby", "Doll", "Puzzle",
-"Outdoor", "Battery Powered" , "kids"]
-_createToys()
+const BASE_URL = "toy"
 
 export const toyService = {
     query,
@@ -19,117 +14,41 @@ export const toyService = {
 
 
 function query(filterBy = getDefaultFilter()) {
-    // return axios.get(BASE_URL).then(res => res.data)
-    console.log('filterBy:',filterBy)
-    return storageService.query(STORAGE_KEY)
-    .then(toys => {
-        if (filterBy.name) {
-            const regex = new RegExp(filterBy.name, 'i')
-            toys = toys.filter(toy => regex.test(toy.name))
-        }
-        if (filterBy.inStock) {
-            toys = toys.filter(toy => toy.inStock)
-        }
-        if (filterBy.label) {
-            toys = toys.filter(toy => toy.labels.includes(filterBy.label))
-        }
-        if (filterBy.sort === 'name') {
-            toys = toys.sort((a, b) => a.name.localeCompare(b.name))
-        }
-        if (filterBy.sort === 'old') {
-            toys = toys.sort((a, b) => a.createdAt - b.createdAt)
-        }
-        if (filterBy.sort === 'new') {
-            toys = toys.sort((a, b) => b.createdAt - a.createdAt)
-        }
-        if (filterBy.sort === 'min-price') {
-            toys = toys.sort((a, b) =>  a.price - b.price)
-        }
-        if (filterBy.sort === 'max-price') {
-            toys = toys.sort((a, b) => b.price - a.price)
-        }
-        return toys
-    })
+    const queryParams = `?name=${filterBy.name}&inStock=${filterBy.inStock}&label=${filterBy.label}&sort=${filterBy.sort}`
+    return httpService.get(BASE_URL + '/' + queryParams)
 }
 
 function getById(toyId) {
-    return storageService.get(STORAGE_KEY, toyId)
+    return httpService.get(BASE_URL + '/' + toyId)
 }
 
 function remove(toyId) {
-    // return Promise.reject('Not now!')
-    return storageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(BASE_URL + '/' + toyId)
 }
 
 function save(toy) {
+    toy.labels = toy.labels.split(',')
+    console.log('toy.labels:',toy)
     if (toy._id) {
-        return storageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        return storageService.post(STORAGE_KEY, toy)
+        // toy.owner = userService.getLoggedinUser()
+        return httpService.post(BASE_URL, toy)
     }
 }
-
 function getEmptyToy() {
     return {
         "name": "",
         "price": "",
         "labels": [],
         "createdAt": Date.now(),
-        "inStock": true
+        "inStock": true,
+        "amount": ''
     }
 }
 
 function getDefaultFilter(){
-return {name:'' , inStock : '' ,labels : '' , sort : '' }
+return {name:'' , inStock : '' ,label : '' , sort : '' }
 }
 
 
-function _createToys() {
-    toys = utilService.loadFromStorage(STORAGE_KEY)
-    if (!toys) {
-        toys = [
-            {
-                "_id": utilService.makeId(),
-                "name": "Bear",
-                "price": 30,
-                "labels": ["Doll" , "Baby"],
-                "createdAt": Date.now(),
-                "inStock": false
-            },
-            {
-                "_id": utilService.makeId(),
-                "name": "Doll",
-                "price": 20,
-                "labels": ["Doll" ,"Battery Powered"],
-                "createdAt": Date.now(),
-                "inStock": false
-            },
-            {
-                "_id": utilService.makeId(),
-                "name": "Race Car",
-                "price": 50,
-                "labels": ["Car" , "Outdoor"],
-                "createdAt": Date.now(),
-                "inStock": true
-            },
-            {
-                "_id": utilService.makeId(),
-                "name": "Ball",
-                "price": 25,
-                "labels": ["kids", "Outdoor"],
-                "createdAt": Date.now(),
-                "inStock": true
-            },
-            {
-                "_id": utilService.makeId(),
-                "name": "Puzzle",
-                "price": 10,
-                "labels": ["Puzzle" , "Kids" , "Box game"],
-                "createdAt": Date.now(),
-                "inStock": true
-            },
-
-        ]
-        utilService.saveToStorage(STORAGE_KEY, toys)
-    }
-}

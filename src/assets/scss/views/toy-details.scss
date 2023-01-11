@@ -1,0 +1,26 @@
+.toy-details {
+    @include flex-columm-center;
+    margin-top: 20px;
+
+    span {
+        color: $clr2;
+    }
+
+    h1 {
+        font-size: 1.7em;
+        margin-bottom: .3em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+        margin-bottom: .3em;
+    }
+
+    h3 {
+        font-size: 1.2em;
+    }
+
+    img{
+        height: 45vh;
+    }
+}

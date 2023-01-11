@@ -1,5 +1,19 @@
-header{
+header {
+    background: var(--main-color);
+    color: var(--txt-color);
+    border-bottom: 2px solid white;
     display: flex;
     justify-content: space-between;
-    background-color: lightpink;
+    align-items: center;
+}
+
+nav>* {
+    padding: 10px;
+    border: none;
+    color: white;
+}
+
+nav a.active {
+    text-decoration: none;
+    color: purple;
 }

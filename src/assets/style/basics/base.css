@@ -13,24 +13,41 @@ h4,
 h5,
 h6 {
     margin: .5em 0 .5em;
-    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
 p {
     margin: 0 0 1em;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-a {
+
+
+button , a{
+    margin-top: 10px;
+    border: 1.5px solid lightgrey;
+    padding: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-decoration: none;
-    color: unset;
+    color: black;
+    cursor: pointer;
 }
 
-a:hover {
-    text-decoration: underline;
-    color: rgb(83, 82, 82)
+a:hover{
+    background-color: lightgrey;
+}
+button:hover{
+    background-color: lightgrey;
 }
 
+input.check-box{
+    accent-color: var(--main-color);
+}
 
+input , label{
+    outline-color: rgb(87, 87, 87) ;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
 
 /* Dont stretch my Media */
 img,
@@ -47,4 +64,9 @@ object {
 
 a.active {
     text-decoration: overline;
+}
+
+.main-layout >*:not(.full){
+    margin-left: 20px;
+    margin-right: 20px;
 }

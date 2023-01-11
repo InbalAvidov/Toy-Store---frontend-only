@@ -1,0 +1,43 @@
+header {
+    background-color: $clr1;
+
+    main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo{
+            color: $clr2;
+            font-size: 2em;
+            font-family: Sigmar;
+        }
+    }
+
+    nav {
+        padding: 2em 0;
+
+        a {
+            text-decoration: none;
+            border-right: 1.5px solid $clr5;
+            color: $clr5;
+            padding: 2.2em .8em;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-transform: uppercase;
+
+
+            &.active {
+                color: $clr2;
+                background-color: lighten($color: $clr1, $amount: 10%);
+            }
+            &:hover {
+                color: $clr2;
+                background-color: lighten($color: $clr1, $amount: 10%);
+            }
+        }
+
+        :first-child {
+            border-left: 1.5px solid $clr5;
+        }
+    }
+}

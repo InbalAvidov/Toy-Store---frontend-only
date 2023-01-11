@@ -1,0 +1,16 @@
+.todo-index{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.toy-add{
+    margin-top: 10px;
+    border: 1.5px solid lightgrey;
+    padding: 5px;
+}
+
+.toy-add:hover{
+    background-color: lightgrey;
+}

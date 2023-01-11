@@ -1,0 +1,16 @@
+.toy-filter {
+    display: flex;
+    justify-content: center;
+
+    .select-cmp {
+        margin: 10px;
+        outline: none;
+        max-height: 50px;
+    }
+
+    .check {
+        align-self: center;
+    }
+
+
+}

@@ -1,0 +1,9 @@
+.todo-filter{
+    margin-top: 15px;
+}
+
+.todo-filter >*:not(.check){
+    margin-right: 10px;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 5px;
+}

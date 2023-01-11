@@ -1,0 +1,37 @@
+.toy-preview {
+    background-color: $clr5;
+    text-align: center;
+    padding: 10px 10px;
+    border: 2px solid darken($clr5, 10%);
+
+    img {
+        height: 120px;
+    }
+
+    .preview-btns {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+
+        >* {
+            margin-bottom: 5px;
+        }
+
+        >*:hover {
+            background-color:
+                lighten($clr1, 10%);
+        }
+    }
+
+    p {
+        font-size: 1.2em;
+        color: $clr3;
+    }
+
+    h1 {
+        font-size: 2em;
+        color: $clr3;
+    }
+
+
+}

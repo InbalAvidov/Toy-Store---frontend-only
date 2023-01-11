@@ -1,0 +1,8 @@
+.main-about {
+    @include flex-columm-center;
+    margin-top: 20px;
+
+    h1{
+        font-size: 1.7em;
+    }
+}

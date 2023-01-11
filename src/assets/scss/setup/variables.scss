@@ -1,0 +1,17 @@
+$clr1: rgb(239, 157, 183);
+$clr2: darken($clr1, 30%);
+$clr3: #606060;
+$clr5: #fafaf9;
+$clr4: darken($clr5, 40%);
+
+// LAYOUT
+$layoutPadding: 20px;
+
+// LAYOUT BREAKPOINTS
+$break-narrow: 700px;
+$break-normal: 900px;
+$break-wide: 1200px;
+
+$padded-break-narrow: $break-narrow + $layoutPadding * 2;
+$padded-break-normal: $break-normal + $layoutPadding * 2;
+$padded-break-wide: $break-wide + $layoutPadding * 2;

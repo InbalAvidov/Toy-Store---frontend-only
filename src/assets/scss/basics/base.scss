@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-family: Comfortaa;
+    color: $clr3;
+    line-height: 1.8;
+
+    @media (max-width: 1300px) {
+        font-size: 13px;
+    }
+}
+
+body {
+    margin: 0;
+    background-color: $clr5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    margin: 0;
+    line-height: lh(40px, 29px);
+    color: $clr3;
+}
+
+button,
+a.btn {
+    background-color: lighten($clr2, 20%);
+    text-decoration: none;
+    color: $clr5;
+    border: none;
+    padding: em(5px) em(10px);
+    font-size: 1em;
+    text-transform: uppercase;
+    border-radius: 1em;
+}
+
+label {
+    color: $clr3;
+    font-size: 1.2em;
+}
+
+select,
+input {
+    margin: 10px;
+    outline: none;
+    max-height: 50px;
+}

@@ -1,5 +1,7 @@
 export function HomePage(){
     return (
-        <h1>Home page</h1>
+        <main className="home">
+            <h1>Welcome to the Toy Store!</h1>
+        </main>
     )
 }
